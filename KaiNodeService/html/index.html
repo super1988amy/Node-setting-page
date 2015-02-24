@@ -1,0 +1,1462 @@
+<!doctype>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>KAI Node Admin Service</title>
+
+<script type="text/javascript" src="/html/javascripts/jquery-min.js"></script>
+<script type="text/javascript" src="/html/javascripts/kendo.all.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/html/css/style.css">
+<link rel="stylesheet" type="text/css" href="/html/css/kendo_kup.css">
+<link rel="stylesheet" type="text/css" href="/html/css/kendo.common.min.css">
+<link rel="stylesheet" type="text/css" href="/html/css/kendo.ml.custom.css">
+
+<style type="text/css">
+body {
+	background: url("/html/images/bg_grid_black.jpg") repeat 0 transparent;
+	color: #FFFFFF;
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0 auto;
+	min-width: 890px;
+	padding: 0;
+}
+
+.ip {
+	width: 64px;
+	height: 28px;
+	font-size: 14px;
+	margin: 0 5px;
+}
+.ip input{
+	width: 64px;
+	height: 28px;
+	font-size: 14px;
+	margin: 0 5px;
+}
+
+
+#msg {
+	color: #EAAC00;
+	font-size: 16px;
+	float: right;
+}
+
+.action-list {
+	padding: 3px;
+	list-style-type: none;
+	clear: both;
+}
+
+.action-list li {
+	float: left;
+	padding-right: 5px;
+}
+
+.action-list-vertical li {
+	list-style-type: none;
+	text-align: left;
+}
+
+#new-update {
+	color: #a00;
+	display: none;
+	font-size: 16px;
+}
+
+#warning-message {
+	color: #a00;
+	display: block;
+	font-size: 24px;
+	text-align: center;
+}
+
+.box_header {
+	color: #EAAC00;
+	float: left;
+	font-size: 20px;
+	font-weight: bold;
+	clear: both;
+	margin: 0 0 10px 10px;
+}
+
+.items {
+	color: #EAAC00;
+	clear: both;
+	margin: 11px;
+	width: 100%;
+}
+
+.items2 {
+	color: #EAAC00;
+	clear: both;
+	margin: 0 0 6px 10px;
+	padding-top: 15px;
+}
+
+.items2 li {
+	color: #EAAC00;
+	margin: 0 0 5px 10px;
+	float: left;
+}
+
+.items2 ul {
+	color: #EAAC00;
+	margin: 0 0 5px 0;
+}
+
+.items2 ul input {
+	height: 62px;
+	min-width: 100px;
+	width: auto;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+.nodeText {
+	min-width: 97px;
+	float: left;
+	margin: 24px;
+}
+
+.serverText {
+	min-width: 90px;
+	float: left;
+	margin-left: 22px;
+}
+
+.networkText {
+	min-width: 120px;
+	margin-left: 22px;
+}
+
+#cloud-server {
+	height: 29px;
+	margin: 0 71px;
+	width: 203px;
+}
+
+#serverChangeMes {
+	margin: 6.5px 0;
+}
+
+#node_operation {
+	margin-top: 15px;
+}
+
+.rect_box {
+	border: 1px solid #565656;
+	margin: 6px 2px 2px 26px;
+	background-image: none, linear-gradient(to bottom, #222222 0px, #161616 100%);
+	/*width: 521px;*/
+}
+
+.rect_box1 {
+	border: 1px solid #565656;
+	margin: 6px 2px 2px 26px;
+}
+
+.rect_box_label {
+	/*color: white;*/
+}
+
+#timezone {
+	width: 80%;
+}
+
+#nodeList{
+}
+#rdDHCP{
+	margin: 0 2px 0 38px;
+}
+#rdStatic{
+	margin: 0 2px 0 10px;
+}
+.eg p{
+	margin: 5px;
+	width: 200px;
+}
+.updateLeft{
+	float: left;
+	width: 250px;
+	min-height: 100px;
+	border-right: 1px solid #EAAC00;
+}
+
+.updateRight{
+	float: right;
+}
+.wrapperDiv{
+	margin-bottom: 30px;
+}
+
+#content{
+	height: 100%;
+}
+
+.saveConfig{
+	margin-left: 146px;
+}
+
+.notice {
+	color: #aa0000;
+}
+
+#serverip {
+	color: #cccccc;
+}
+
+#macaddress {
+	color: #cccccc;
+}
+
+.top-start {
+	text-align: right;
+	float:right;
+}
+
+.top-start input {
+	font-size: 18px;
+	min-width: 100px;
+	height: 62px;
+}
+
+::-webkit-scrollbar{
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius:10px;
+    height: 30px;
+    width: 8px;
+    background: rgb(111,111,111);
+    -webkit-box-shadow: 0 1px 1px rgb(0,0,0);
+}
+
+::-webkit-scrollbar-track-piece {
+    height: 30px;
+    width: 30px;
+}
+
+::-moz-scrollbar{
+    width: 7px;
+}
+
+::-moz-scrollbar-thumb{
+    border-radius:10px;
+    height: 30px;
+    width: 8px;
+    background: rgb(111,111,111);
+    -webkit-box-shadow: 0 1px 1px rgb(0,0,0);
+}
+
+::-moz-scrollbar-track-piece {
+    height: 30px;
+    width: 30px;
+}
+
+</style>
+</head>
+<body>
+	<div id="header">
+		<a title="kai" id="logo" href="#">KAI</a>
+	</div>
+	<div style="clear: both;"></div>
+	<div id="content">
+		<div class="main_content">
+			<div class="main_content_inside" style="color: #000;">
+				<div class="setting_box" style="text-align: left;">
+					<div id="msg"></div>
+					<div class="wrapperDiv">
+						<div id="warning-message">
+						</div>
+						<div id="new-update">
+							New update available, You can click 'Online Upgrade' to upgrade your node!!
+						</div>
+						<div>
+							<div style="float: left">
+								<div class="box_header">Node IP address is <span id="serverip"></span></div>
+								<div class="box_header">Node MAC address is <span id="macaddress"></span></div>
+							</div>
+							<div class="top-start"><input class="k-button" type="button" id="back" name="back" value="Launch" /></div>
+						</div>
+						<div class="wrapperDiv"></div>
+						<div class="box_header">Node Operation</div>
+						<div class="items">Node Setting allows you to configure the node network and account setting.</div>
+						<h2></h2>
+						<div id="node_operation">
+							<div class="items2 rect_box">
+								<div id="nodeList">
+									<span class="nodeText" style="font-weight: bold;">Node Operation</span>
+									<ul>
+										<li><input class="k-button" type="button" id="factoryreset" name="factoryreset" value="Factory Reset" /></li>
+										<li><input class="k-button" type="button" id="restart" name="restart" value="Restart" /></li>
+										<li><input class="k-button" type="button" id="exportlog" name="exportlog" value="Export Logs" /></li>
+									</ul>
+								</div>
+							</div>
+							<div class="items2 rect_box">
+								<span class="nodeText" style="font-weight: bold; margin-top: 24px;">Device Operation</span>
+								<div id="deviceList">
+									<ul>
+										<!--<li><input class="k-button" type="button" id="viewlog"
+											name="viewlog" value="View Log" /></li>-->
+											<li><input class="k-button" type="button" id="operationpassword"
+											name="operationpassword" value="Change &#x00A; Operation Pass" /></li>
+											<li><input class="k-button" type="button" id="reboot"
+											name="reboot" value="Reboot" /></li>
+											<li><input class="k-button" type="button" id="shutdown"
+											name="shutdown" value="Shutdown" /></li>
+									</ul>
+								</div>
+							</div>
+							<div class="items2 rect_box">
+								<span class="nodeText" style="font-weight: bold; margin-top: 24px;">TimeZone settings</span>
+								<div style="font-weight: bold; margin-top: 18px;">
+									<select id="timezone">
+									</select>
+									<input type="button" class="k-button" id="settimezone" value="Set" />&nbsp;
+									<span id="timezone_result"></span>
+								</div>
+							</div>
+						</div>	
+					</div>
+					<div class="wrapperDiv">
+					<div class="box_header">Cloud Setting</div>				
+					<div class="items">Configure the cloud server that the Node
+						should be connected to. By default, it is set to KAI Unified
+						Platform.</div>
+					<h2></h2>
+					<div class="items2">
+						<span class="serverText">Server IP Address <input type="text"
+							class="k-input k-textbox" id="cloud-server" name="cloud-server"
+							placeholder="kaiup.Kaisquare.com" />
+						</span>
+						<div id="serverChangeMes"></div>
+					</div>
+					</div>
+					<div class="wrapperDiv">
+					<div class="box_header">Network Setting</div>
+					<div class="items">Set Node ethernet connection</div>
+					<h2></h2>
+					<div class="items2">
+					<span class="networkText" >IP Setting Mode: 
+					<input type="radio" id="rdDHCP" name="nettype" checked="checked" />&nbsp;<span 
+							class="text">DHCP</span> &nbsp;&nbsp; <input type="radio"
+							id="rdStatic" name="nettype" />&nbsp;<span class="text">Static
+							IP</span> 
+					</span>
+					<table id="networksettings" cellspacing="0" cellpadding="0" border="1"
+						style="margin: 21px; text-align: left; color: #EAAC00">
+						<tr>
+							<td class="networkText">IP Address:</td>
+							<td class="ip"><input type="text" id="ip1" maxLength="3" /></td>
+							<td>.</td>
+							<td class="ip"><input type="text" id="ip2" maxLength="3" /></td>
+							<td>.</td>
+							<td class="ip"><input type="text" id="ip3" maxLength="3" /></td> 
+							<td>.</td>
+							<td class="ip"><input type="text" id="ip4" maxLength="3" /></td>
+							<td></td>
+						</tr>
+						<tr>
+						<td></td>
+							<td class="eg" colspan="6"><p>example: 192.168.1.6</p> </td>
+					    </tr>
+						<tr>
+							<td class="networkText">Netmask:</td>
+							<td class="ip"><input type="text" id="netmask1" maxLength="3"/></td> 
+							<td>.</td>
+							<td class="ip"><input type="text" id="netmask2" maxLength="3" /></td> 
+							<td>.</td>
+							<td class="ip"><input type="text" id="netmask3" maxLength="3" /></td> 
+							<td>.</td>
+							<td class="ip"><input type="text" id="netmask4" maxLength="3" /></td>
+							<td></td>
+						</tr>
+						<tr>
+						<td></td>
+							<td class="eg" colspan="6"><p>example: 225.255.255.0</p></td>
+					    </tr>
+						<tr>
+							<td class="networkText">Gateway:</td>
+							<td class="ip"><input type="text" id="gw1" maxLength="3" /></td>
+							<td>.</td>
+							<td class="ip"><input type="text" id="gw2" maxLength="3" /></td>
+							<td>.</td> 
+							<td class="ip"><input type="text" id="gw3" maxLength="3" /></td>
+							<td>.</td>
+							<td class="ip"><input type="text" id="gw4" maxLength="3" /></td>
+							<td></td>
+						</tr>
+						<tr>
+						<td></td>
+							<td class="eg" colspan="6"><p>example: 192.168.1.6</p> </td>
+					    </tr>
+						<tr>
+							<td class="networkText">Primary DNS:</td>
+							<td class="ip"><input type="text" id="ns11" maxLength="3" /></td>
+							<td>.</td>
+							<td class="ip"><input type="text" id="ns12" maxLength="3" /></td>
+							<td>.</td> 
+							<td class="ip"><input type="text" id="ns13" maxLength="3" /></td>
+							<td>.</td>
+							<td class="ip"><input type="text" id="ns14" maxLength="3" /></td>
+							<td style="width: 110px"><span id="ns11Mes" style="color: red;"></span></td>
+						</tr>
+						<tr>
+						<td></td>
+							<td class="eg" colspan="6"><p>example: 8.8.8.1 is google DNS</p></td>
+					    </tr>
+						<tr>
+							<td class="networkText">Secondary DNS:</td>
+							<td class="ip"><input type="text" id="ns21" maxLength="3" /></td>
+							<td>.</td>
+							<td class="ip"><input type="text" id="ns22" maxLength="3" /></td>
+							<td>.</td> 
+							<td class="ip"><input type="text" id="ns23" maxLength="3" /></td>
+							<td>.</td>
+							<td class="ip"><input type="text" id="ns24" maxLength="3" /></td>
+							<td style="width: 110px"><span id="ns21Mes" style="color: red;"></span></td>
+						</tr>
+					</table>
+					<div class = "saveConfig">
+						<input class="k-button" type="button" id="saveNetwork" value="Apply Network Settings" />
+					</div>
+					</div>
+					<div class="wrapperDiv" style="margin-top: 27px;">
+					<div class="box_header">FirmWare Update</div>
+					<div class="items">
+						<input type="checkbox" id="autoupdate" name="autoupdate" /> Auto Update <span class="notice">(Applications will be updated automatically if service downloaded the latest update file)</span>
+					</div>
+					<h2></h2>
+					<div class="items2 rect_box1">
+						<div id="nodeList">
+							<div class="nodeText">
+								<span id="kainode_ver">Node</span>
+								(<span id="iso_ver">ISO</span>)
+							</div>
+							<ul>
+								<li>
+									<input class="k-button" type="button" id="popUpupdate" name="update" value="Upgrade by USB" />
+								</li>
+								<li>
+									<input class="k-button" type="button" id="online-update" name="online-update" value="Online Upgrade" />
+									<input class="k-button" type="button" id="online-update-check" name="online-update" value="Check Upgrade Now" />
+								</li>
+							</ul>
+							</div>
+						</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div id=popupWin style="display: none">
+		<div class="kup-form-box">confirmationMessage</div>
+		<div align="center">
+			<a id="btnConfirmOk" href="#" class="k-button"
+				style="width: 60px; margin-right: 10px">Yes</a> <a
+				id="btnConfirmCancel" href="#" class="k-button" style="width: 60px">No</a>
+		</div>
+	</div>
+	<div id=popupUpdate style="display: none">
+		<div>
+			<div class="updateLeft">
+				<span style="margin: 0px 85px;">STEP ONE</span><br></br>
+				<span style="margin-left: 10px;">Please plug-in the USB drive into the Node.</span>
+			</div>
+			<div class="updateRight">
+				<span style="margin: 0px 85px;">STEP TWO</span>
+				<br></br>
+				<input style="margin-left: 89px;" class="k-button" type="button" id="update" name="update" value="Update" />
+			</div>
+		</div>
+	</div>
+	<div id=popupPass style="display: none">
+		<div class="kup-form-box">confirmationMessage</div>
+		<div align="center">
+			<input type="password" id="password" class="k-textbox" required maxlength='50'/>
+			<a id="btnConfirmPass" href="#" class="k-button"
+				style="width: 60px; margin-right: 10px">Submit</a>
+		</div>
+	</div>
+	<div id=popupChgPass style="display: none">
+		<div class="kup-form-box">confirmationMessage</div>
+		<div align="center">
+			<table>
+			<tr>
+			<td>New password: </td>
+			<td><input type="password" id="chgpassword1" class="k-textbox" required maxlength='50'/></td>
+			</tr>
+			<tr>
+			<td>Comfirm new password: </td>
+			<td><input type="password" id="chgpassword2" class="k-textbox" required maxlength='50'/></td>
+			</tr>
+			</table><br/>
+			<a id="btnConfirmChgPass" href="#" class="k-button"
+				style="width: 60px; margin-right: 10px">Submit</a>
+			<a id="btnConfirmCancelPass" href="#" class="k-button" 
+				style="width: 60px">Cancel</a>
+		</div>
+	</div>
+</body>
+
+
+
+<script type="text/javascript">
+
+
+
+	$("#ip1").prop("disabled", "true");
+	$("#ip2").prop("disabled", "true");
+	$("#ip3").prop("disabled", "true");
+	$("#ip4").prop("disabled", "true");
+	$("#netmask1").prop("disabled", "true");
+	$("#netmask2").prop("disabled", "true");
+	$("#netmask3").prop("disabled", "true");
+	$("#netmask4").prop("disabled", "true");
+	$("#gw1").prop("disabled", "true");
+	$("#gw2").prop("disabled", "true");
+	$("#gw3").prop("disabled", "true");
+	$("#gw4").prop("disabled", "true");
+	$("#ns11").prop("disabled", "true");
+	$("#ns12").prop("disabled", "true");
+	$("#ns13").prop("disabled", "true");
+	$("#ns14").prop("disabled", "true");
+	$("#ns21").prop("disabled", "true");
+	$("#ns22").prop("disabled", "true");
+	$("#ns23").prop("disabled", "true");
+	$("#ns24").prop("disabled", "true");
+
+	$("#rdStatic").click(function() {
+		$("#ip1").removeAttr("disabled");
+		$("#ip2").removeAttr("disabled");
+		$("#ip3").removeAttr("disabled");
+		$("#ip4").removeAttr("disabled");
+		$("#netmask1").removeAttr("disabled");
+		$("#netmask2").removeAttr("disabled");
+		$("#netmask3").removeAttr("disabled");
+		$("#netmask4").removeAttr("disabled");
+		$("#gw1").removeAttr("disabled");
+		$("#gw2").removeAttr("disabled");
+		$("#gw3").removeAttr("disabled");
+		$("#gw4").removeAttr("disabled");
+		$("#ns11").removeAttr("disabled");
+		$("#ns12").removeAttr("disabled");
+		$("#ns13").removeAttr("disabled");
+		$("#ns14").removeAttr("disabled");
+		$("#ns21").removeAttr("disabled");
+		$("#ns22").removeAttr("disabled");
+		$("#ns23").removeAttr("disabled");
+		$("#ns24").removeAttr("disabled");
+	});
+
+	$("#rdDHCP").click(function() {
+		$("#ip1").prop("disabled", "true");
+		$("#ip2").prop("disabled", "true");
+		$("#ip3").prop("disabled", "true");
+		$("#ip4").prop("disabled", "true");
+		$("#netmask1").prop("disabled", "true");
+		$("#netmask2").prop("disabled", "true");
+		$("#netmask3").prop("disabled", "true");
+		$("#netmask4").prop("disabled", "true");
+		$("#gw1").prop("disabled", "true");
+		$("#gw2").prop("disabled", "true");
+		$("#gw3").prop("disabled", "true");
+		$("#gw4").prop("disabled", "true");
+		$("#ns11").prop("disabled", "true");
+		$("#ns12").prop("disabled", "true");
+		$("#ns13").prop("disabled", "true");
+		$("#ns14").prop("disabled", "true");
+		$("#ns21").prop("disabled", "true");
+		$("#ns22").prop("disabled", "true");
+		$("#ns23").prop("disabled", "true");
+		$("#ns24").prop("disabled", "true");
+	});
+	
+	//$('.setting_box').perfectScrollbar();
+
+	var ota = false, checking = false, updateCheck = window.setInterval("checkSoftwareUpdate()", 30000),
+		downloadedPercent = 0;
+	;
+	$(document)
+			.ready(
+					function() {
+
+						var url = location.href;
+						var pos = url.indexOf("?");
+						if (pos != -1)
+						{
+							var str = url.substring(pos + 1);
+							var params = str.split("&");
+							for (var i = 0; i < params.length; i++)
+							{
+								var param = params[i];
+								if (param.indexOf("failed=") == 0)
+								{
+									var process = decodeURIComponent(param.substring(param.indexOf("=") + 1)).replace(/\+/g, " ");
+									$("#warning-message").text("Unable to start '" + process + "'");
+								}
+							}
+						}
+
+						$.get("/version", function(result) {
+							$('#kainode_ver').text(result.data);
+						});
+
+						$.get("/isoversion", function(result) {
+							$('#iso_ver').text(result.data);
+						});
+
+						$.get("/gettimezonelist", function(resp) {
+							if (resp.result == "ok")
+							{
+								var tzlist = resp.data;
+								var $tz = $("#timezone");
+								for (var i = 0; i < tzlist.length; i++)
+								{
+									var tz = tzlist[i];
+									$tz.append("<option value='" + tz + "'>" + tz + "</option>");
+								}
+								$.get("/gettimezone", function(resp) {
+									$('#timezone').val(resp.data);
+								});
+							}
+						});
+
+						$.get("/getadminsettings", function(resp) {
+							if (resp.result == "ok")
+							{
+								if (resp.data.autoUpdate)
+									$("#autoupdate").attr("checked", "checked");
+							}
+
+							$("#autoupdate").change(function () {
+								$.post("/autoupdatetoggle");
+							});
+						});
+
+						$("#settimezone").click(function() {
+							$.post("/settimezone", {"timezone": $("#timezone").val()}, function(resp) {
+								var $tz_result = $("#timezone_result");
+								if (resp.result == "ok")
+									$tz_result.text("ok").css("color", "#090");
+								else
+									$tz_result.text("failed").css("color", "#900");
+
+								$tz_result.fadeIn("slow").fadeOut("slow");
+							});
+						});
+
+						$("#exportdata").click(function() {
+							popupConfirm(
+								"Export Data",
+								"Please plug-in usb driver into node, " +
+								"and make sure it has enough space to store data<br /><br /> Click 'YES' to continue",
+								function(choice) {
+									if (choice)
+									{
+										popupPassword("Export Data","Plase enter the operation password<br /><br /> " +
+											"Click 'Submit' to continue", function(choice) {
+											if (choice == "error")
+											{
+												alert("Invalid Password");
+												showContainer();
+												return false;
+											}else if(choice == "ok"){
+												hideContainer();
+												showMessage("Exporting data...");
+												$.get("/exportdata", function(resp) {
+													if (resp.result != "ok")
+													{
+														alert("Could not find usb device");
+														showContainer();
+													}
+												});
+											}
+										});										
+									}
+								}
+							);
+						}),
+
+						$("#exportlog").click(function() {
+							popupConfirm(
+								"Export Logs",
+								"Please plug-in usb driver into node, " +
+								"and make sure it has enough space to store logs of node applications<br /><br /> Click 'YES' to continue",
+								function(choice) {
+									if (choice)
+									{
+										popupPassword("Export Logs","Plase enter the operation password<br /><br />"+
+											" Click 'Submit' to continue", function(choice2) {	
+											if (choice2 == "error")
+											{
+												alert("Invalid Password");
+												showContainer();
+												return false;
+											}else if(choice2 == "ok"){
+												hideContainer();
+												showMessage("Exporting logs...");
+												$.get("/exportlog", function(resp) {
+													if (resp.result != "ok")
+													{
+														alert("Could not find usb device");
+														showContainer();
+													}
+												});
+											}
+										});
+									}
+								}
+							);
+						}),
+
+						$("#importdata").click(function() {
+							popupConfirm(
+								"Import Data",
+								"Please plug-in usb driver into node, " +
+								"and make sure it has available data for import<br /><br /> Click 'YES' to continue",
+								function(choice) {
+									if (choice)
+									{
+										popupPassword("Import Data","Plase enter the operation password<br /><br />"+
+											" Click 'Submit' to continue", function(choice) {
+											if (choice == "error")
+											{
+												alert("Invalid Password");
+												showContainer();
+												return false;
+											}else if(choice == "ok"){	
+												hideContainer();
+												showMessage("Importing data, Do NOT remove your USB drive...");
+												$.get("/importdata", function(resp) {
+													if (resp.result != "ok")
+													{
+														alert("Could not find usb device");
+														showContainer();
+													}
+												});
+											}
+										});
+									}
+								}
+							);
+						}),
+						
+						$("#operationpassword").click(function() {							
+							
+							popupPassword("Operation Password","Plase enter the current operation password <br /><br />"+
+								" Click 'Submit' to continue", function(choice) {
+								if (choice == "error")
+								{
+									alert("Invalid Password");
+									showContainer();
+									return false;
+								}else if(choice == "ok"){	
+									//hideContainer();
+									popupChgPassword("Change Operation Password", "Plase enter the new operation password", 
+									function(choice) {
+										if(choice == "cancel")
+											alert("No operation password been changed");
+										else if(choice == "error")
+											alert("Unable to change operation password");
+										else if(choice == "ok")
+											alert("Operation password has been changed");
+									});
+								}
+							});		
+								
+																			
+						}),
+
+						$('#restart')
+								.click(
+										function() {
+											popupConfirm(
+													"Restart service",
+													"Restart service now ?",
+													function(choice) {
+														if (choice)
+															restartService();
+													});
+										});
+
+						$('#reboot').click(
+								function() {
+									popupConfirm("Reboot Device",
+											"Reboot device now ?", function(
+													choice) {
+												if (choice) {
+													rebootdevice();
+												}
+											});
+								});
+
+						$('#shutdown')
+								.click(
+										function() {
+											popupConfirm(
+													"Shutdown Device",
+													"Shutdown device now ?",
+													function(choice) {
+														if (choice) {
+															hideContainer();
+															showMessage("Shutdown device...");
+															$.get('/shutdowndevice');
+														}
+													});
+										});
+
+						function popupConfirm(title, confirmMsg, callback) {
+							var choice = false;
+							$(".kup-form-box").html(confirmMsg);
+							var contentHtml = $("#popupWin").html();
+							var kendoWindow = $("#popupWin").kendoWindow({
+								visible : false,
+								title : title,
+								resizable : false,
+								modal : true,
+								width : 300,
+								close : onClosed,
+							});
+							
+							 $("#popupWin").data("kendoWindow").title(title);
+							
+							function onClosed() {
+								callback(choice);
+							}
+							kendoWindow.data("kendoWindow")
+									.content(contentHtml).center().open();
+
+							$("#btnConfirmOk").click(function() {
+								choice = true;
+								$("#popupWin").data("kendoWindow").close();
+							});
+
+							$("#btnConfirmCancel").click(function() {
+								choice = false;
+								$("#popupWin").data("kendoWindow").close();
+							});
+						}
+
+						function popupPassword(title, confirmMsg, callback) {
+							var choice = "cancel";
+						    $("#popupPass .kup-form-box").html(confirmMsg);
+						    var contentHtml = $("#popupPass").html();
+						    var kendoWindow = $("#popupPass").kendoWindow({
+						        visible: false,
+						        title: title,
+						        resizable: false,
+						        modal: true,
+						        width: 300,
+						        close: onClosed
+						    });
+						    $("#popupPass").data("kendoWindow").title(title);
+
+						    function onClosed() {
+						        callback(choice);
+						    }
+						    $("#password").val("");
+						    kendoWindow.data("kendoWindow")
+						    		.content(contentHtml).center().open();
+
+						    $("#btnConfirmPass").click(function () {	
+						    	$.post("/checksystempassword", {"password": $("#password").val()}, function(resp) {
+									if (resp.result == "ok"){
+										choice = "ok";
+									}	
+									else{
+										choice = "error";
+										$("#password").val("");
+									}	
+									$("#popupPass").data("kendoWindow").close();
+								});
+						    });
+						}
+						
+						function popupChgPassword(title, confirmMsg, callback) {
+							var choice = "cancel";
+							$("#popupChgPass .kup-form-box").html(confirmMsg);
+							var contentHtml = $("#popupChgPass").html();
+							var kendoWindow = $("#popupChgPass").kendoWindow({
+								visible : false,
+								title : title,
+								resizable : false,
+								modal : true,
+								width : 300,
+								close : onClosed,
+							});
+							
+							 $("#popupChgPass").data("kendoWindow").title(title);
+							
+							function onClosed() {
+								callback(choice);
+							}
+							$("#chgpassword1").val("");
+							$("#chgpassword2").val("");
+							kendoWindow.data("kendoWindow")
+									.content(contentHtml).center().open();
+
+							$("#btnConfirmChgPass").click(function() {
+								if($("#chgpassword1").val() == ""){
+									$("#chgpassword1").val("");
+									$("#chgpassword2").val("");
+									alert("Please enter new password");
+								}else if($("#chgpassword2").val() == ""){
+									$("#chgpassword1").val("");
+									$("#chgpassword2").val("");
+									alert("Please enter comfirm new password");
+								}else if($("#chgpassword1").val() != $("#chgpassword2").val()){
+									$("#chgpassword1").val("");
+									$("#chgpassword2").val("");
+									alert("Operation password not match");
+								}else if($("#chgpassword1").val().length < 8 
+										|| $("#chgpassword2").val().length < 8 ){
+									$("#chgpassword1").val("");
+									$("#chgpassword2").val("");
+									alert("Password length must be at least 8 characters");
+								}else{
+									$.post("/setsystempassword", {"password": $("#chgpassword1").val()}, function(resp) {
+										if (resp.result == "ok"){
+											choice = "ok";
+										}	
+										else{
+											choice = "error";
+										}	
+										$("#popupChgPass").data("kendoWindow").close();
+									});
+								}
+							});
+
+							$("#btnConfirmCancelPass").click(function() {
+								$("#popupChgPass").data("kendoWindow").close();
+							});
+						}
+						
+						function updateByUsb(title, confirmMsg, callback) {
+							var choice = false;
+							$(".kup-form-box").html(confirmMsg);
+							var contentHtml = $("#popupUpdate").html();
+							var kendoWindow = $("#popupUpdate").kendoWindow({
+								content : contentHtml,
+								visible : false,
+								title : title,
+								resizable : false,
+								modal : true,
+								width : 506,
+								close : onClosed,
+							});
+
+							 $("#popupUpdate").data("kendoWindow").title(title);
+							
+							kendoWindow.data("kendoWindow")
+									.content(contentHtml).center().open();
+
+							function onClosed() {
+								callback(choice);
+							}
+
+							$("#update")
+									.click(
+											function() {
+												$("#popupUpdate").data("kendoWindow").close();
+												popupConfirm(
+														"Shutdown Device",
+														"Are you sure to update KAI Node ?\n\n (Please make sure that you have plugged USB drive in KAI Node)",
+														function(choice) {
+															if (choice) {
+																hideContainer();
+																showMessage("Updating...");
+																showMessage("Do NOT remove USB drive");
+																$.get('/update', function(resp) {
+																	if (resp.result != "ok")
+																	{
+																		alert("Update failed");
+																		showContainer();
+																	}
+																});
+															}
+														});
+											});
+						}
+
+						$("#popUpupdate").click(
+								function() {
+									html = "";
+									updateByUsb("Firmware Upgrade", html,
+											function(status) {
+												if (status) {
+
+												}
+											});
+								});
+
+						var fixedPosWindows = null;
+						var currentWindowScrollPos;
+
+						$('#rollback')
+								.click(
+										function() {
+											popupConfirm(
+													"Restore Service",
+													"Are you sure to restore Service from backup ?",
+													function(choice) {
+														if (choice) {
+															hideContainer();
+															showMessage("Restoring...");
+															$.get('/rollback', function(resp) {
+																if (resp.result != "ok")
+																{
+																	alert("Could not find usb device");
+																	showContainer();
+																}
+															});
+														}
+													});
+										});
+
+						$('#factoryreset')
+								.click(
+										function() {
+											popupConfirm(
+													"Factory Reset",
+													"WARNNING!!<br />Are you sure to wipe out data on this device ?<br />All data will be deleted.",
+													function(choice) {
+														if (choice) {
+															popupPassword("Factory Reset","Plase enter the operation password<br /><br />"+
+																" Click 'Submit' to continue", function(choice) {
+																if (choice == "error")
+																{
+																	alert("Invalid Password");
+																	showContainer();
+																	return false;
+																}else if (choice == "ok"){	
+																	hideContainer();
+																	showMessage("Resetting device...");
+																	$.ajax({
+																		type : "POST",
+																		dataType : "json",
+																		url : "http://localhost/nodeapi/reset",
+																		cache : false,
+																		success : function(resp) {
+																			if (resp.result == "ok")
+																				alert("Request sent");
+																			else
+																			{
+																				alert("Failed to execute command. " + resp.reason);
+																				showContainer();
+																			}
+																		},
+																		error : function(jqXhr, textStatus, errorThrown) {
+																			alert('Operation Failed: ' 
+																				+ jqXhr.statusCode() + ":" + jqXhr.statusText + "\n"
+																				+ jqXhr.responseText);
+																			showContainer();
+																		}
+																	});
+																}
+															});
+														}
+													});
+										});
+
+						$("#cloud-server").focusout(
+								function() {
+									$("#serverChangeMes").html("");
+									$.ajax({
+										type : "POST",
+										url : "/changeserver",
+										data : {
+											"server" : $("#cloud-server").val()
+										},
+										success : function(resp) {
+											if (resp.result == "ok") {
+												$("#serverChangeMes")
+														.html("OK");
+												$("#serverChangeMes").css(
+														"color", "green");
+												popupConfirm("Apply change", "it needs to restart service to apply changes. \nDo you want to restart service now ?", function(confirmed) {
+													if (confirmed)
+														restartService();
+												});
+											} else {
+												$("#serverChangeMes").html(
+														resp.reason);
+												$("#serverChangeMes").css(
+														"color", "red");
+											}
+										},
+										error : function() {
+											$("#serverChangeMes").html(
+													"error changing server");
+											$("#serverChangeMes").css("color",
+													"red");
+										}
+									});
+								});
+
+						$('#back').click(function() {
+							if (window.history.length > 1)
+								location.href = 'http://localhost/';
+							else
+								location.href = '/go/kainode';
+						});
+						
+						var saveButton;
+						$('#saveNetwork')
+								.click(function() {
+									var self = this;
+									popupConfirm("Network Settings", "The node will reboot now in order to apply the changes. <br />Do you want to continue ?", function(confirmed) {
+										if (confirmed) {
+											var buttonText = $(self).val();
+											var ns = [];
+											var ns1 = getIP('ns1');
+											var ns2 = getIP('ns2');
+
+											if (ns1 != '')
+												ns.push(ns1);
+											if (ns2 != '')
+												ns.push(ns2);
+											
+
+											var isDhcp = $("#rdDHCP").is(":checked");
+											// if (!isDhcp)
+											// {
+											// 	//validate secondary and primary DNS data	    
+											// 	  $("#ns11Mes").html("");
+											// 	  $("#ns21Mes").html("");
+												  
+											// 	  if(!CheckDNSPattern(ns11)){  
+											// 	    $("#ns11Mes").html("");
+											// 	    $("#ns11Mes").html("Invalid DNS Pattern");
+											// 	    return;
+											// 	  } 
+											// 	  else if(!CheckDNSPattern(ns21)){
+											// 		  $("#ns21Mes").html("");
+											// 		    $("#ns21Mes").html("Invalid DNS Pattern");  
+											// 		    return;
+											// 	}
+											// } 
+
+											$(self).val("Saving...");
+											$(self).attr('disabled', 'disabled');
+											saveButton = self;
+											$.ajax({
+												type : "POST",
+												url : "/setnetwork",
+												cache : false,
+												data : {
+													"ip" : (isDhcp ? 'dhcp' : getIP('ip')),
+													"netmask" : getIP('netmask'),
+													"gateway" : getIP('gw'),
+													"nameservers" : encodeURIComponent(ns.join(' '))
+												}
+											})
+											.done(function(resp) {
+												if (resp.result == 'ok')
+													rebootdevice();
+												else
+													alert('Failed to configure network: '
+															+ resp.reason);
+											})
+											.fail(function() {
+												alert('Failed to configure network');
+											})
+											.always(function() {
+												$(saveButton)
+													.removeAttr('disabled')
+													.val(buttonText);
+											});
+										}
+										else
+											loadNetworkSettings();
+									});
+								});
+
+						$networkInputs = $('#networksettings').find(
+								'input[type=text]');
+						$networkInputs
+								.keyup(
+										function(e) {
+											if (e.keyCode == 9) //tab pressed
+												return;
+
+											if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105))
+											{
+												var index = $networkInputs.index(this);
+												if ($(this).val().length >= 3
+														&& index < $networkInputs.length)
+													$networkInputs.eq(index + 1).focus();
+												else if (e.keyCode == 8
+														&& $(this).val().length == 0
+														&& index > 0)
+													$networkInputs.eq(index - 1).focus();
+											}
+										})
+								.keydown(
+										function(e) {
+											if (e.keyCode == 190) {
+												var index = $networkInputs.index(this);
+												$networkInputs.eq(index + 1).focus();
+												return false;
+											} else if ((e.keyCode >= 48 && e.keyCode <= 57)
+													|| (e.keyCode >= 96 && e.keyCode <= 105)
+													|| e.keyCode == 8
+													|| e.keyCode == 37
+													|| e.keyCode == 39
+													|| e.keyCode == 9)
+												return true;
+
+											return false;
+										}).focus(function() {
+									$(this).select();
+								});
+
+						$("#online-update").click(function() {
+							popupConfirm(
+								"Onlne Update",
+								"Update the latest version from Internet ?",
+								function(choice) {
+									if (choice) {
+										$.get("/ota");
+										showMessage("Downloading...");
+										downloadedPercent = 0;
+										ota = true;
+										hideContainer();
+										window.clearInterval(updateCheck);
+										window.setInterval("checkSoftwareUpdate()", 1000);
+									}
+								}
+							);
+						});
+
+						$("#online-update-check").click(function() {
+							checking = true;
+							$(this).fadeOut();
+							$.get("/check-update").always(function() {
+								window.setTimeout(function() {
+									checkSoftwareUpdate();
+								}, 3000);
+							});
+						});
+
+						$.ajax({
+							type : "POST",
+							url : "/serverip",
+							cache : false,
+							success : function(data) {
+								$('#serverip').text(data.data);
+							}
+						}).done(function() {
+						});
+
+						$.ajax({
+							type: "POST",
+							url: "/macaddress",
+							cache: false,
+							success: function(data) {
+								$("#macaddress").text(data.data);
+							}
+						});
+
+						loadNetworkSettings();
+
+						$.ajax({
+							type : "POST",
+							url : "/getserver",
+							cache : false,
+							success : function(resp) {
+								if (resp.result == "ok")
+									$("#cloud-server").val(resp.data);
+							}
+						});
+
+						checkSoftwareUpdate();
+					});
+
+	function hideContainer() {
+		$('.wrapperDiv').hide();
+	}
+
+	function showContainer() {
+		$('.wrapperDiv').show();
+		clearMessage();
+	}
+
+	var msg = [];
+	function showMessage(message, clean) {
+		if (clean)
+			msg.length = 0;
+		msg.push(message);
+		$('#msg').html(msg.join('<br />'));
+	}
+
+	function clearMessage()
+	{
+		msg.length = 0;
+		$("#msg").html("");
+	}
+
+	function loadNetworkSettings()
+	{
+		$.ajax({
+			type : "POST",
+			url : "/getnetwork",
+			cache : false,
+			success : function(resp) {
+				var ip = resp.data.ip
+						.split('.');
+				var netmask = resp.data.netmask;
+				assignIP('ip', ip);
+				var mask = 0xffffffff << (32 - netmask);
+				var netmaskIP = [ mask >>> 24,
+						mask >> 16 & 0xff,
+						mask >> 8 & 0xff,
+						mask & 0xff ];
+				assignIP('netmask', netmaskIP);
+				assignIP('gw',
+						resp.data.gateway
+								.split('.'));
+
+				var servers = resp.data.nameservers
+						.split(' ');
+				for ( var i = 0; i < servers.length
+						&& i < 2; i++)
+					assignIP('ns' + (i + 1),
+							servers[i]
+									.split('.'));
+
+				$('#rdStatic').removeAttr(
+						'checked');
+				$('#rdDHCP').removeAttr(
+						'checked');
+				if (resp.data.type == 'static')
+				{
+					$('#rdStatic').attr(
+							'checked',
+							'checked').click();
+
+				}
+				else
+					$('#rdDHCP').attr(
+							'checked',
+							'checked');
+			}
+		}).done(function() {
+		});
+	}
+
+	function assignIP(field, ip) {
+		for ( var i = 0; i < ip.length; i++)
+			$('#' + field + (i + 1)).val(ip[i]);
+	}
+
+	function getIP(field) {
+		var ip = [];
+		for ( var i = 1; i <= 4; i++) {
+			var v = $('#' + field + i).val();
+			if (v == '')
+				return '';
+
+			ip.push(v);
+		}
+
+		return ip.join('.');
+	}
+	
+	function CheckDNSPattern(DNSAddress){  
+	    DNSStatus = false;   
+	    DNSParts = DNSAddress.split(".");  
+	    if(DNSParts.length==4){  
+	      for(i=0;i<4;i++){  
+	          
+	        TheNum = parseInt(DNSParts[i]);  
+	        if(TheNum >= 0 && TheNum <= 99){}  
+	        else{break;}  
+	          
+	      }  
+	      if(i==4)DNSStatus=true;   
+	    }  
+	    return DNSStatus;  
+	  }  
+
+	function rebootdevice() {
+		hideContainer();
+		showMessage("Rebooting...");
+		$.get('/rebootdevice');
+	}
+
+	function restartService() {
+		hideContainer();
+		showMessage("Restarting...");
+		$.get('/restart', function(resp) {
+			if (resp.result != "ok")
+			{
+				alert("Failed to restart service");
+				showContainer();
+			}
+		});
+	}
+
+	function checkSoftwareUpdate() {
+		$.ajax({
+			type : "POST",
+			url : "/softwareupdate",
+			cache : false
+		}).done(function(resp) {
+			var $el = $("#new-update");
+			var $ota = $("#online-update");
+			var $checkUpdate = $("#online-update-check");
+			if (resp.data.status == "available") {
+				if (ota)
+					$.get("/ota-update");
+				else
+				{
+					$el.show();
+					$checkUpdate.hide();
+				}
+			} else if (resp.data.status == "pending" && ota) {
+				$el.hide();
+				if (downloadedPercent > resp.data.percent)
+				{
+					$.get("/ota-cancel");
+					ota = false;
+					downloadedPercent = 0;
+					alert("Error downloading update file, please try again. " + downloadedPercent)
+					showContainer();
+				}
+				else
+				{
+					downloadedPercent = resp.data.percent;
+					$("#msg").text("Downloading..." + resp.data.percent + "%");
+				}
+			} else {
+				$el.hide();
+				if (resp.data.status == "unavailable")
+				{
+					$ota.hide();
+					if (!$checkUpdate.is(":visible"))
+						$checkUpdate.fadeIn();
+					if (checking)
+					{
+						alert("No available update now.");
+						checking = false;
+					}
+				}
+				else
+				{
+					$checkUpdate.hide();
+					if (!$ota.is(":visible"))
+						$ota.fadeIn();
+				}
+			}
+		})
+	}
+</script>
+
+</html>

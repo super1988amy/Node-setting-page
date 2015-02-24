@@ -1,0 +1,73 @@
+<!doctype>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/loading.css" />
+	<script type="text/javascript" src="javascripts/modernizr.custom.js"></script>
+	
+	<style type="text/css">
+	#parent {
+	    display: table;
+	    height: 95%;
+	}
+
+	#child {
+		display: table-cell;
+	    vertical-align: middle;
+	    text-align: center
+	}
+	.logo {
+		width: 155px;
+		height: 77px;
+		display: none;
+	}
+	</style>
+</head>
+
+<body>
+<div class="container">	
+	<!-- Codrops top bar -->
+	<div class="codrops-top clearfix">
+	</div>
+	<div align="center">
+		<div id="parent">
+			<div id="child">
+				<img id="logo" class="logo" src="images/kaisquare_logo.png" />
+			</div>
+		</div>
+	</div>
+	<!-- <div class="os-phrases" id="os-phrases">
+		<h2>INTELLIGENCE</h2>
+		<h2>TO ENHANCE</h2>
+		<h2>AND PROTECT </h2>
+		<h2>YOUR BUSINESS</h2>
+		<h2>Video Analytics</h2>
+		<h2>KAI Node</h2>
+		<h2>Powered By</h2>
+		<h2>KAI SQUARE</h2>
+	</div> -->
+</div><!-- /container -->
+<script src="javascripts/jquery-min.js"></script>
+<script src="javascripts/jquery.lettering.js"></script>
+<script>
+	$(document).ready(function() {
+		// $("#os-phrases > h2").css('opacity',1).lettering('words').children("span").lettering().children("span").lettering(); 
+		$("#logo").fadeIn(3000, blink);
+	})
+	var show = true;
+	function blink() {
+		var fadein = {
+			opacity: 1
+		}, fadeout = {
+			opacity: 0.7
+		};
+		window.setTimeout(function () {
+			show = !show;
+			$("#logo").animate(show ? fadeout : fadein, 1000, blink);
+		}, 50);
+	}
+</script>
+</body>
+</html>
